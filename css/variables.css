@@ -1,0 +1,86 @@
+/* ========================================
+   shuttleservice-event.de
+   CSS Custom Properties / Design Tokens
+   ======================================== */
+
+:root {
+  /* ---- Colors ---- */
+  --color-white: #FFFFFF;
+  --color-offwhite: #F8F7F5;
+  --color-light-gray: #EDEDED;
+  --color-medium-gray: #B0B0B0;
+  --color-border: #E0DEDA;
+
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #888888;
+  --color-text-inverse: #FFFFFF;
+
+  --color-accent-gold: #C5A47E;
+  --color-accent-gold-hover: #B08D68;
+  --color-accent-gold-light: rgba(197, 164, 126, 0.12);
+
+  --color-cta-bg: #1A1A1A;
+  --color-cta-text: #FFFFFF;
+  --color-cta-hover: #333333;
+
+  --color-overlay-dark: rgba(0, 0, 0, 0.55);
+  --color-overlay-darker: rgba(0, 0, 0, 0.7);
+  --color-overlay-light: rgba(255, 255, 255, 0.92);
+
+  /* ---- Typography ---- */
+  --font-heading: "Cormorant Garamond", "Georgia", serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --fs-hero: clamp(2.5rem, 5vw, 4.25rem);
+  --fs-h1: clamp(2rem, 4vw, 3.25rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --fs-h4: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-label: 0.75rem;
+
+  --lh-heading: 1.2;
+  --lh-body: 1.7;
+
+  --ls-label: 0.15em;
+  --ls-button: 0.1em;
+
+  /* ---- Spacing ---- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 7rem;
+  --space-3xl: 10rem;
+
+  /* ---- Layout ---- */
+  --container-max: 1200px;
+  --container-narrow: 800px;
+  --container-padding: var(--space-md);
+  --section-padding: var(--space-2xl) 0;
+
+  /* ---- Misc ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* ---- Header ---- */
+  --header-height: 90px;
+  --header-height-scrolled: 70px;
+}

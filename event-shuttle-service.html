@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Shuttle Service &ndash; Shuttle f&uuml;r Veranstaltungen | shuttleservice-event.de</title>
+  <meta name="description" content="Professioneller Event Shuttle Service fuer Messen, Kongresse, Galas und Firmenveranstaltungen. Individuelle Planung, Premium Fahrzeuge, zuverlaessige Durchfuehrung.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .fade-up:nth-child(5) { transition-delay: 0.4s; }
+    .fade-up:nth-child(6) { transition-delay: 0.5s; }
+
+    /* Hero Slim */
+    .hero-slim {
+      position: relative; height: 55vh; min-height: 400px; max-height: 550px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; padding: 0;
+    }
+    .hero-slim .hero-bg { position: absolute; inset: 0; }
+    .hero-slim .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-slim .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.65) 100%);
+    }
+    .hero-slim .hero-content {
+      position: relative; z-index: 1; color: var(--color-white); max-width: 750px;
+    }
+    .hero-slim .breadcrumb {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-bottom: var(--space-sm);
+    }
+    .hero-slim .breadcrumb a { color: rgba(255,255,255,0.6); transition: color var(--transition-fast); }
+    .hero-slim .breadcrumb a:hover { color: var(--color-accent-gold); }
+    .hero-slim .breadcrumb .sep { color: var(--color-accent-gold); }
+    .hero-slim h1 {
+      font-family: var(--font-heading); font-size: var(--fs-h1);
+      font-weight: var(--fw-medium); line-height: 1.15; margin-bottom: var(--space-sm);
+    }
+    .hero-slim .hero-subtitle {
+      font-size: 1.0625rem; color: rgba(255,255,255,0.8); font-weight: var(--fw-light);
+      margin-bottom: var(--space-md);
+    }
+
+    /* USP Bar */
+    .usp-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md);
+      padding: var(--space-lg) 0; border-bottom: 1px solid var(--color-border);
+    }
+    .usp-bar-item { text-align: center; }
+    .usp-bar-item .usp-bar-icon {
+      color: var(--color-accent-gold); margin-bottom: var(--space-xs);
+    }
+    .usp-bar-item .usp-bar-icon svg { width: 28px; height: 28px; }
+    .usp-bar-item span {
+      display: block; font-size: var(--fs-small); font-weight: var(--fw-medium);
+      color: var(--color-text-primary);
+    }
+
+    /* Process Section */
+    .process-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);
+      counter-reset: process;
+    }
+    .process-grid-item {
+      counter-increment: process; position: relative; padding: var(--space-lg);
+      background: var(--color-white); border: 1px solid var(--color-border);
+      transition: all var(--transition-base);
+    }
+    .process-grid-item:hover {
+      border-color: var(--color-accent-gold); box-shadow: var(--shadow-md);
+    }
+    .process-grid-item::before {
+      content: counter(process, decimal-leading-zero);
+      font-family: var(--font-heading); font-size: 2.5rem;
+      font-weight: var(--fw-light); color: var(--color-accent-gold);
+      line-height: 1; display: block; margin-bottom: var(--space-sm);
+    }
+    .process-grid-item h3 {
+      font-family: var(--font-heading); font-size: var(--fs-h3);
+      font-weight: var(--fw-semibold); margin-bottom: var(--space-xs);
+    }
+    .process-grid-item p {
+      font-size: var(--fs-small); color: var(--color-text-secondary); line-height: var(--lh-body);
+    }
+
+    /* Stats */
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);
+      text-align: center; padding: var(--space-xl) 0;
+    }
+    .stat-item .stat-number {
+      font-family: var(--font-heading); font-size: 3rem;
+      font-weight: var(--fw-light); color: var(--color-accent-gold); line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+    .stat-item .stat-label {
+      font-size: var(--fs-small); color: var(--color-text-muted); text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+    }
+
+    @media (max-width: 1024px) {
+      .usp-bar { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 767px) {
+      .hero-slim { height: 45vh; min-height: 320px; }
+      .usp-bar { grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+      .process-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: 1fr; gap: var(--space-md); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <span class="logo-text">shuttleservice</span>
+          <span class="logo-tagline">Powered by AYDEN</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">Services
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown nav-dropdown-wide">
+                <div class="dropdown-group">
+                  <span class="dropdown-heading">Shuttle Services</span>
+                  <a href="shuttle-service.html" class="dropdown-link">Shuttle Service</a>
+                  <a href="event-shuttle-service.html" class="dropdown-link">Event Shuttle Service</a>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-group">
+                  <span class="dropdown-heading">Spezialisierte Services</span>
+                  <a href="#" class="dropdown-link">Flughafen Shuttle</a>
+                  <a href="#" class="dropdown-link">Airport Transfer Service</a>
+                  <a href="#" class="dropdown-link">Business Shuttle Service</a>
+                  <a href="#" class="dropdown-link">VIP Shuttle Service</a>
+                  <a href="#" class="dropdown-link">Executive Shuttle</a>
+                  <a href="#" class="dropdown-link">Luxus Shuttle Service</a>
+                  <a href="#" class="dropdown-link">Shuttle mit Sicherheitsfahrer</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">F&uuml;r wen
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown">
+                <a href="#" class="dropdown-link">Messe &amp; Ausstellung</a>
+                <a href="#" class="dropdown-link">Firmenfeier &amp; Gala</a>
+                <a href="#" class="dropdown-link">Kongress &amp; Konferenz</a>
+                <a href="#" class="dropdown-link">Hochzeit</a>
+                <a href="#" class="dropdown-link">Grossveranstaltung</a>
+                <a href="#" class="dropdown-link">VIP G&auml;ste</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="fahrzeuge.html" class="nav-link">Fahrzeuge</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">&Uuml;ber uns</a></li>
+            <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+          </ul>
+          <div class="header-cta">
+            <a href="kontakt.html" class="btn btn-primary btn-sm">Shuttle anfragen</a>
+          </div>
+        </nav>
+        <div class="nav-overlay"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======== HERO ======== -->
+    <section class="hero-slim">
+      <div class="hero-bg">
+        <img src="images/hero-hotel-vklasse.png" alt="Mercedes V-Klasse vor Luxushotel mit Chauffeur" loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="breadcrumb">
+            <a href="index.html">Startseite</a>
+            <span class="sep">/</span>
+            <span>Event Shuttle Service</span>
+          </div>
+          <h1>Event Shuttle Service</h1>
+          <p class="hero-subtitle">Professionelle Shuttle-L&ouml;sungen f&uuml;r Ihre Veranstaltung. Koordiniert, p&uuml;nktlich, auf Premium-Niveau.</p>
+          <a href="kontakt.html" class="btn btn-primary">Event Shuttle planen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== USP BAR ======== -->
+    <section style="padding: 0;">
+      <div class="container">
+        <div class="usp-bar fade-up">
+          <div class="usp-bar-item">
+            <div class="usp-bar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span>Individuelle Routen</span>
+          </div>
+          <div class="usp-bar-item">
+            <div class="usp-bar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <span>Mehrere Fahrzeuge</span>
+          </div>
+          <div class="usp-bar-item">
+            <div class="usp-bar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <span>Professionelle Chauffeure</span>
+          </div>
+          <div class="usp-bar-item">
+            <div class="usp-bar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <span>Flexible Zeiten</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ERKLAERUNG (Split) ======== -->
+    <section>
+      <div class="container">
+        <div class="split fade-up">
+          <div class="split-content">
+            <span class="section-label">Was wir bieten</span>
+            <h2>Was ist ein Event Shuttle Service?</h2>
+            <hr class="divider">
+            <p>Ein Event Shuttle Service koordiniert den reibungslosen Transport Ihrer G&auml;ste &ndash; von der Planung &uuml;ber die Durchf&uuml;hrung bis zur Nachbereitung. Wir &uuml;bernehmen die gesamte Logistik, damit Sie sich auf Ihre Veranstaltung konzentrieren k&ouml;nnen.</p>
+            <p>Ob 10 oder 500 G&auml;ste, ob ein Abend oder eine ganze Woche &ndash; wir skalieren unseren Service pr&auml;zise nach Ihren Anforderungen.</p>
+            <ul>
+              <li>Individuelle Routenplanung und Zeitkoordination</li>
+              <li>Koordination mehrerer Fahrzeuge und Chauffeure</li>
+              <li>Pers&ouml;nlicher Ansprechpartner f&uuml;r Ihre Veranstaltung</li>
+              <li>Echtzeit-Kommunikation und flexible Anpassung</li>
+              <li>Premium Fahrzeugflotte von AYDEN</li>
+            </ul>
+            <a href="kontakt.html" class="btn btn-primary">Event Shuttle planen</a>
+          </div>
+          <div class="split-image">
+            <img src="images/passengers-premium.webp" alt="Business-Passagiere geniessen Komfort im Premium Shuttle" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ANLAESSE ======== -->
+    <section class="bg-offwhite">
+      <div class="container">
+        <div class="section-header centered fade-up">
+          <span class="section-label">Anl&auml;sse</span>
+          <h2>F&uuml;r welchen Anlass planen Sie?</h2>
+          <p>Jeder Anlass hat eigene Anforderungen &ndash; wir kennen sie und liefern die passende L&ouml;sung.</p>
+        </div>
+
+        <div class="occasion-grid">
+          <a href="#" class="occasion-card fade-up">
+            <h3>Messe &amp; Ausstellung</h3>
+            <p>Koordinierter Shuttle-Transfer zwischen Hotels, Messegel&auml;nde und Flughafen. Optimierte Routen, flexible Abholzeiten, Kapazit&auml;t f&uuml;r grosse Delegationen.</p>
+            <span class="card-link" style="margin-top: auto; padding-top: var(--space-sm);">
+              Mehr erfahren
+              <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+
+          <a href="#" class="occasion-card fade-up">
+            <h3>Firmenfeier &amp; Gala</h3>
+            <p>Stilvoller G&auml;stetransfer f&uuml;r Ihre Unternehmensveranstaltung. Elegante Fahrzeuge, professioneller Service und sichere Heimfahrt f&uuml;r alle G&auml;ste.</p>
+            <span class="card-link" style="margin-top: auto; padding-top: var(--space-sm);">
+              Mehr erfahren
+              <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+
+          <a href="#" class="occasion-card fade-up">
+            <h3>Kongress &amp; Konferenz</h3>
+            <p>Zuverl&auml;ssiger Transfer f&uuml;r Teilnehmer, Referenten und VIP-G&auml;ste. P&uuml;nktlich, koordiniert und mit pers&ouml;nlichem Ansprechpartner vor Ort.</p>
+            <span class="card-link" style="margin-top: auto; padding-top: var(--space-sm);">
+              Mehr erfahren
+              <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+
+          <a href="#" class="occasion-card fade-up">
+            <h3>Hochzeit</h3>
+            <p>Eleganter Transport f&uuml;r den sch&ouml;nsten Tag. Ob Brautpaar-Transfer oder G&auml;ste-Shuttle &ndash; wir machen Ihren Tag unvergesslich.</p>
+            <span class="card-link" style="margin-top: auto; padding-top: var(--space-sm);">
+              Mehr erfahren
+              <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+
+          <a href="#" class="occasion-card fade-up">
+            <h3>Grossveranstaltung</h3>
+            <p>Koordination grosser Fahrzeugflotten f&uuml;r Events mit hohem G&auml;steaufkommen. Logistik auf h&ouml;chstem Niveau &ndash; auch bei komplexen Anforderungen.</p>
+            <span class="card-link" style="margin-top: auto; padding-top: var(--space-sm);">
+              Mehr erfahren
+              <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+
+          <a href="#" class="occasion-card fade-up">
+            <h3>VIP &amp; Executive G&auml;ste</h3>
+            <p>Diskreter Premium-Transfer f&uuml;r F&uuml;hrungskr&auml;fte, Redner und besondere G&auml;ste. First-Class-Fahrzeuge und h&ouml;chste Vertraulichkeit.</p>
+            <span class="card-link" style="margin-top: auto; padding-top: var(--space-sm);">
+              Mehr erfahren
+              <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== PROZESS ======== -->
+    <section>
+      <div class="container">
+        <div class="section-header centered fade-up">
+          <span class="section-label">Ihr Weg zum Event Shuttle</span>
+          <h2>So planen wir Ihren Event Shuttle</h2>
+          <p>Von der ersten Anfrage bis zur erfolgreichen Durchf&uuml;hrung &ndash; wir begleiten Sie durch jeden Schritt.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-grid-item fade-up">
+            <h3>Anfrage</h3>
+            <p>Teilen Sie uns Ihre Anforderungen mit &ndash; Anlass, Datum, Personenanzahl, Abholorte und besondere W&uuml;nsche.</p>
+          </div>
+          <div class="process-grid-item fade-up">
+            <h3>Beratung</h3>
+            <p>Ihr pers&ouml;nlicher Ansprechpartner bespricht mit Ihnen die Details und ber&auml;t Sie zu Fahrzeugauswahl und Routenplanung.</p>
+          </div>
+          <div class="process-grid-item fade-up">
+            <h3>Angebot</h3>
+            <p>Sie erhalten ein transparentes, massgeschneidertes Angebot &ndash; ohne versteckte Kosten, verbindlich und fair.</p>
+          </div>
+          <div class="process-grid-item fade-up">
+            <h3>Planung</h3>
+            <p>Wir erstellen den detaillierten Einsatzplan mit Routen, Zeitfenstern, Fahrzeugzuteilung und Chauffeur-Koordination.</p>
+          </div>
+          <div class="process-grid-item fade-up">
+            <h3>Durchf&uuml;hrung</h3>
+            <p>Am Tag Ihres Events sind unsere Chauffeure vor Ort &ndash; p&uuml;nktlich, professionell und in Echtzeit koordiniert.</p>
+          </div>
+          <div class="process-grid-item fade-up">
+            <h3>Nachbereitung</h3>
+            <p>Nach dem Event erhalten Sie ein Reporting und wir besprechen Optimierungspotenzial f&uuml;r k&uuml;nftige Veranstaltungen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== STATS ======== -->
+    <section class="bg-offwhite">
+      <div class="container">
+        <div class="stats-bar fade-up">
+          <div class="stat-item">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Standorte in Deutschland</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Service &amp; Erreichbarkeit</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Fahrzeugklassen</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== STANDORTE ======== -->
+    <section>
+      <div class="container">
+        <div class="section-header centered fade-up">
+          <span class="section-label">Standorte</span>
+          <h2>Event Shuttle in Ihrer Stadt</h2>
+          <p>Wir sind in den wichtigsten deutschen St&auml;dten f&uuml;r Sie verf&uuml;gbar.</p>
+        </div>
+
+        <div class="location-bar fade-up">
+          <a href="#" class="location-item"><span>K&ouml;ln</span></a>
+          <a href="#" class="location-item"><span>D&uuml;sseldorf</span></a>
+          <a href="#" class="location-item"><span>Berlin</span></a>
+          <a href="#" class="location-item"><span>M&uuml;nchen</span></a>
+          <a href="#" class="location-item"><span>Frankfurt</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== CTA SECTION ======== -->
+    <section class="cta-section" style="background-image: url('images/chauffeur-airport.png');">
+      <div class="container">
+        <span class="section-label" style="color: var(--color-accent-gold);">Jetzt planen</span>
+        <h2>Ihr Event verdient den besten Shuttle Service.</h2>
+        <p>Kontaktieren Sie uns f&uuml;r eine individuelle Beratung und ein massgeschneidertes Angebot.</p>
+        <div class="cta-buttons">
+          <a href="kontakt.html" class="btn btn-primary btn-lg">Event Shuttle planen</a>
+          <a href="tel:+4900000000" class="btn btn-ghost-light btn-lg">Jetzt anrufen</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-text">shuttleservice</span>
+            <span class="logo-tagline">Powered by AYDEN</span>
+          </div>
+          <p class="footer-description">Ihr Premium Shuttle Service f&uuml;r Events, Business und anspruchsvolle Privatpersonen. Zuverl&auml;ssig, diskret und exklusiv.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="shuttle-service.html">Shuttle Service</a></li>
+            <li><a href="event-shuttle-service.html">Event Shuttle</a></li>
+            <li><a href="#">Flughafen Shuttle</a></li>
+            <li><a href="#">Business Shuttle</a></li>
+            <li><a href="#">VIP Shuttle</a></li>
+            <li><a href="#">Executive Shuttle</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Standorte</h4>
+          <ul>
+            <li><a href="#">K&ouml;ln</a></li>
+            <li><a href="#">D&uuml;sseldorf</a></li>
+            <li><a href="#">Berlin</a></li>
+            <li><a href="#">M&uuml;nchen</a></li>
+            <li><a href="#">Frankfurt</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Unternehmen</h4>
+          <ul>
+            <li><a href="#">&Uuml;ber uns</a></li>
+            <li><a href="fahrzeuge.html">Fahrzeuge</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 shuttleservice-event.de &ndash; Powered by AYDEN | Partner: amr-solutions.de</span>
+        <div class="footer-legal">
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
