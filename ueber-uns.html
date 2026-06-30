@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&Uuml;ber uns &ndash; Chauffeurservice M&uuml;nchen | AYDEN Chauffeurs &amp; Limousines</title>
+  <meta name="description" content="AYDEN Chauffeurs &amp; Limousines: Ihr Chauffeurservice in M&uuml;nchen. Gegr&uuml;ndet von Daniel Hankofer. Premium Limousinenservice, Flughafentransfer &amp; Event-Shuttle f&uuml;r Firmenkunden.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+    /* Hero Slim */
+    .hero-slim {
+      position: relative; height: 50vh; min-height: 380px; max-height: 500px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; padding: 0;
+    }
+    .hero-slim .hero-bg { position: absolute; inset: 0; }
+    .hero-slim .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-slim .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.65) 100%);
+    }
+    .hero-slim .hero-content {
+      position: relative; z-index: 1; color: var(--color-white); max-width: 700px;
+    }
+    .hero-slim .breadcrumb {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-bottom: var(--space-sm);
+    }
+    .hero-slim .breadcrumb a { color: rgba(255,255,255,0.6); transition: color var(--transition-fast); }
+    .hero-slim .breadcrumb a:hover { color: var(--color-accent-gold); }
+    .hero-slim .breadcrumb .sep { color: var(--color-accent-gold); }
+    .hero-slim h1 {
+      font-family: var(--font-heading); font-size: var(--fs-h1);
+      font-weight: var(--fw-medium); line-height: 1.15; margin-bottom: var(--space-xs);
+    }
+    .hero-slim .hero-subtitle {
+      font-size: 1.0625rem; color: rgba(255,255,255,0.75); font-weight: var(--fw-light);
+    }
+
+    /* Intro */
+    .intro-section { max-width: 800px; margin: 0 auto; text-align: center; }
+    .intro-section h2 {
+      font-family: var(--font-heading); font-size: var(--fs-h2);
+      font-weight: var(--fw-medium); margin-bottom: var(--space-sm);
+    }
+    .intro-section p {
+      color: var(--color-text-secondary); font-size: 1.0625rem; line-height: var(--lh-body);
+    }
+
+    /* Values Grid */
+    .values-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md);
+    }
+    .value-card {
+      padding: var(--space-lg); background: var(--color-white);
+      border: 1px solid var(--color-border);
+      transition: all var(--transition-base);
+    }
+    .value-card:hover {
+      border-color: var(--color-accent-gold); box-shadow: var(--shadow-md);
+    }
+    .value-card .value-icon {
+      width: 48px; height: 48px; margin-bottom: var(--space-sm);
+      color: var(--color-accent-gold);
+    }
+    .value-card .value-icon svg { width: 100%; height: 100%; }
+    .value-card h3 {
+      font-family: var(--font-heading); font-size: var(--fs-h3);
+      font-weight: var(--fw-semibold); margin-bottom: var(--space-xs);
+    }
+    .value-card p {
+      font-size: var(--fs-small); color: var(--color-text-secondary); line-height: var(--lh-body);
+    }
+
+    /* Founder Section */
+    .founder-section {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center;
+    }
+    .founder-image {
+      aspect-ratio: 3 / 4; background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border); display: flex;
+      align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-size: 4rem;
+      font-weight: var(--fw-light); color: var(--color-accent-gold);
+    }
+    .founder-content h2 {
+      font-family: var(--font-heading); font-size: var(--fs-h2);
+      font-weight: var(--fw-medium); margin-bottom: var(--space-sm);
+    }
+    .founder-content .founder-role {
+      font-size: var(--fs-label); font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-label); text-transform: uppercase;
+      color: var(--color-accent-gold); margin-bottom: var(--space-md);
+      display: block;
+    }
+    .founder-content p {
+      color: var(--color-text-secondary); font-size: 1.0625rem;
+      line-height: var(--lh-body); margin-bottom: var(--space-sm);
+    }
+
+    @media (max-width: 1024px) {
+      .founder-section { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .founder-image { max-width: 400px; margin: 0 auto; }
+    }
+    @media (max-width: 767px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .hero-slim { height: 40vh; min-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <span class="logo-text">shuttleservice</span>
+          <span class="logo-tagline">Powered by AYDEN</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">Services
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown nav-dropdown-wide">
+                <div class="dropdown-group">
+                  <span class="dropdown-heading">Shuttle Services</span>
+                  <a href="shuttle-service.html" class="dropdown-link">Shuttle Service</a>
+                  <a href="event-shuttle-service.html" class="dropdown-link">Event Shuttle Service</a>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-group">
+                  <span class="dropdown-heading">Spezialisierte Services</span>
+                  <a href="#" class="dropdown-link">Flughafen Shuttle</a>
+                  <a href="#" class="dropdown-link">Airport Transfer Service</a>
+                  <a href="#" class="dropdown-link">Business Shuttle Service</a>
+                  <a href="#" class="dropdown-link">VIP Shuttle Service</a>
+                  <a href="#" class="dropdown-link">Executive Shuttle</a>
+                  <a href="#" class="dropdown-link">Luxus Shuttle Service</a>
+                  <a href="#" class="dropdown-link">Shuttle mit Sicherheitsfahrer</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">F&uuml;r wen
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown">
+                <a href="#" class="dropdown-link">Messe &amp; Ausstellung</a>
+                <a href="#" class="dropdown-link">Firmenfeier &amp; Gala</a>
+                <a href="#" class="dropdown-link">Kongress &amp; Konferenz</a>
+                <a href="#" class="dropdown-link">Hochzeit</a>
+                <a href="#" class="dropdown-link">Grossveranstaltung</a>
+                <a href="#" class="dropdown-link">VIP G&auml;ste</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="fahrzeuge.html" class="nav-link">Fahrzeuge</a></li>
+            <li class="nav-item"><a href="ueber-uns.html" class="nav-link">&Uuml;ber uns</a></li>
+            <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+          </ul>
+          <div class="header-cta">
+            <a href="kontakt.html" class="btn btn-primary btn-sm">Shuttle anfragen</a>
+          </div>
+        </nav>
+        <div class="nav-overlay"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======== HERO SLIM ======== -->
+    <section class="hero-slim">
+      <div class="hero-bg">
+        <img src="images/chauffeur-airport.png" alt="Professioneller Chauffeur am Flughafen M&uuml;nchen" loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="breadcrumb">
+            <a href="index.html">Startseite</a>
+            <span class="sep">/</span>
+            <span>&Uuml;ber uns</span>
+          </div>
+          <h1>&Uuml;ber AYDEN Chauffeurs &amp; Limousines</h1>
+          <p class="hero-subtitle">Premium Chauffeurservice aus M&uuml;nchen &ndash; f&uuml;r Unternehmen, die auf Zuverl&auml;ssigkeit und Diskretion setzen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== INTRO ======== -->
+    <section>
+      <div class="container">
+        <div class="intro-section fade-up">
+          <span class="section-label">Wer wir sind</span>
+          <h2>Chauffeurservice &amp; Limousinenservice auf Premium-Niveau</h2>
+          <hr class="divider centered">
+          <p>AYDEN Chauffeurs &amp; Limousines steht f&uuml;r erstklassige Mobilit&auml;t in M&uuml;nchen und europaweit. Wir sind der Chauffeurservice, auf den sich Firmenkunden, PAs und Office Manager verlassen &ndash; ob Flughafentransfer, Limousinenservice f&uuml;r Gesch&auml;ftstermine oder koordinierte Event-Shuttles f&uuml;r hunderte G&auml;ste.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== WERTE / USPs ======== -->
+    <section class="bg-offwhite">
+      <div class="container">
+        <div class="section-header centered fade-up">
+          <span class="section-label">Was uns auszeichnet</span>
+          <h2>Service, der den Unterschied macht</h2>
+        </div>
+
+        <div class="values-grid">
+
+          <div class="value-card fade-up">
+            <div class="value-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 4l6 12h14l-11 8 4 14-13-9-13 9 4-14L4 16h14z"/>
+              </svg>
+            </div>
+            <h3>Kompromisslose Qualit&auml;t</h3>
+            <p>Unsere Chauffeure verf&uuml;gen &uuml;ber internationale Erfahrung, absolvieren regelm&auml;&szlig;ige Fahrsicherheitstrainings und treten stets in professioneller Business-Kleidung auf. Jede Fahrt wird von der Planung bis zur Ankunft &uuml;berwacht &ndash; f&uuml;r maximale Transparenz und absolute Verl&auml;sslichkeit.</p>
+          </div>
+
+          <div class="value-card fade-up">
+            <div class="value-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 36L16 12h16l4 24"/>
+                <path d="M8 28h32"/>
+                <circle cx="24" cy="20" r="5"/>
+              </svg>
+            </div>
+            <h3>Premium-Fahrzeugflotte</h3>
+            <p>Von der Mercedes S-Klasse &uuml;ber den Audi A8 bis zur V-Klasse f&uuml;r Gruppen: Unsere Flotte wird h&ouml;chsten Anspr&uuml;chen gerecht. Jedes Fahrzeug ist makellos gepflegt, mit Annehmlichkeiten ausgestattet und bereit, Sie stilvoll ans Ziel zu bringen.</p>
+          </div>
+
+          <div class="value-card fade-up">
+            <div class="value-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="24" r="20"/>
+                <path d="M16 24h16"/>
+                <path d="M24 16v16"/>
+                <circle cx="14" cy="14" r="2"/>
+                <circle cx="34" cy="14" r="2"/>
+                <circle cx="14" cy="34" r="2"/>
+                <circle cx="34" cy="34" r="2"/>
+              </svg>
+            </div>
+            <h3>Europaweit vernetzt &ndash; in M&uuml;nchen verwurzelt</h3>
+            <p>Unser Netzwerk erstreckt sich &uuml;ber ganz Europa, unsere Wurzeln liegen in M&uuml;nchen. Ob Flughafentransfer am MUC, Chauffeurservice f&uuml;r eine Messe in D&uuml;sseldorf oder ein Limousinenservice in Berlin &ndash; wir kennen die Anforderungen vor Ort und liefern zuverl&auml;ssig.</p>
+          </div>
+
+          <div class="value-card fade-up">
+            <div class="value-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="8" y="8" width="32" height="32" rx="4"/>
+                <path d="M16 24h16"/>
+                <path d="M24 16v16"/>
+              </svg>
+            </div>
+            <h3>Flexibilit&auml;t f&uuml;r Eventplaner &amp; PAs</h3>
+            <p>Wir arbeiten eng mit Ihnen zusammen, um den Transport nahtlos in Ihre Veranstaltung zu integrieren. Von individueller Fahrzeugbeklebung &uuml;ber gebrandete Empfangs-Counter bis hin zur Bereitstellung von Hostessen &ndash; wir passen uns Ihren Anforderungen an, nicht umgekehrt.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== GR&Uuml;NDER ======== -->
+    <section>
+      <div class="container">
+        <div class="founder-section fade-up">
+          <div class="founder-image">
+            DH
+          </div>
+          <div class="founder-content">
+            <span class="section-label">Der Gr&uuml;nder</span>
+            <h2>Daniel Hankofer</h2>
+            <span class="founder-role">Gr&uuml;nder &amp; Gesch&auml;ftsf&uuml;hrer, AYDEN Chauffeurs &amp; Limousines</span>
+            <p>AYDEN Chauffeurs &amp; Limousines wurde von Daniel Hankofer gegr&uuml;ndet &ndash; mit der Vision, Gesch&auml;ftskunden und Reiseplanern in ganz Europa einen Chauffeurservice auf h&ouml;chstem Niveau zu bieten. Seine langj&auml;hrige Erfahrung im internationalen Chauffeur- und Limousinengesch&auml;ft bildet das Fundament des Unternehmens.</p>
+            <p>Professionalit&auml;t, Diskretion und eine konsequente Servicequalit&auml;t sind f&uuml;r ihn keine Schlagworte, sondern der Ma&szlig;stab f&uuml;r jede einzelne Fahrt. Von der sorgf&auml;ltigen Auswahl erfahrener Chauffeure bis zur perfekten Organisation komplexer Transfers und Events &ndash; Daniel Hankofer pr&auml;gt jedes Detail pers&ouml;nlich.</p>
+            <p>Unter seiner F&uuml;hrung hat sich AYDEN zu einem vertrauensw&uuml;rdigen Premium-Anbieter entwickelt, der weit &uuml;ber M&uuml;nchen hinaus t&auml;tig ist &ndash; und auf den sich Firmenkunden, PAs und Office Manager europaweit verlassen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 24/7 & DISKRETION ======== -->
+    <section class="bg-offwhite">
+      <div class="container">
+        <div class="split fade-up">
+          <div class="split-image">
+            <img src="images/passengers-premium.webp" alt="Business-Passagiere im Premium Chauffeurservice Fahrzeug" loading="lazy">
+          </div>
+          <div class="split-content">
+            <span class="section-label">Unser Versprechen</span>
+            <h2>24/7 erreichbar. Absolut diskret.</h2>
+            <hr class="divider">
+            <p>Erstklassige Mobilit&auml;t kennt keine B&uuml;rozeiten. Unser Chauffeurservice in M&uuml;nchen ist rund um die Uhr erreichbar &ndash; auch kurzfristig und am Wochenende. Was zwischen Ihnen und Ihrem Chauffeur passiert, bleibt vertraulich. Diskretion ist f&uuml;r uns selbstverst&auml;ndlich, nicht verhandelbar.</p>
+            <ul>
+              <li>24/7-Erreichbarkeit &ndash; auch an Feiertagen</li>
+              <li>Kurzfristige Buchungen oft innerhalb von Stunden</li>
+              <li>H&ouml;chste Vertraulichkeit und Datenschutz</li>
+              <li>Pers&ouml;nlicher Ansprechpartner f&uuml;r Firmenkunden</li>
+              <li>&Uuml;bersichtliche Monatsrechnung f&uuml;r Ihr Unternehmen</li>
+            </ul>
+            <a href="kontakt.html" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== CTA SECTION ======== -->
+    <section class="cta-section" style="background-image: url('images/hero-hotel-vklasse.png');">
+      <div class="container">
+        <span class="section-label" style="color: var(--color-accent-gold);">Zusammenarbeiten</span>
+        <h2>Ihr Chauffeurservice in M&uuml;nchen &ndash; pers&ouml;nlich und zuverl&auml;ssig.</h2>
+        <p>Lernen Sie uns kennen. Wir freuen uns auf Ihre Anfrage &ndash; unverbindlich und transparent.</p>
+        <div class="cta-buttons">
+          <a href="kontakt.html" class="btn btn-primary btn-lg">Jetzt anfragen</a>
+          <a href="tel:+4900000000" class="btn btn-ghost-light btn-lg">Jetzt anrufen</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-text">shuttleservice</span>
+            <span class="logo-tagline">Powered by AYDEN</span>
+          </div>
+          <p class="footer-description">Ihr Chauffeurservice &amp; Limousinenservice in M&uuml;nchen. Flughafentransfer, Business Shuttle &amp; Event-Logistik f&uuml;r Firmenkunden. Powered by AYDEN.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="shuttle-service.html">Shuttle Service</a></li>
+            <li><a href="event-shuttle-service.html">Event Shuttle</a></li>
+            <li><a href="#">Flughafen Shuttle</a></li>
+            <li><a href="#">Business Shuttle</a></li>
+            <li><a href="#">VIP Shuttle</a></li>
+            <li><a href="#">Executive Shuttle</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Standorte</h4>
+          <ul>
+            <li><a href="#">K&ouml;ln</a></li>
+            <li><a href="#">D&uuml;sseldorf</a></li>
+            <li><a href="#">Berlin</a></li>
+            <li><a href="#">M&uuml;nchen</a></li>
+            <li><a href="#">Frankfurt</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Unternehmen</h4>
+          <ul>
+            <li><a href="ueber-uns.html">&Uuml;ber uns</a></li>
+            <li><a href="fahrzeuge.html">Fahrzeuge</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 shuttleservice-event.de &ndash; Powered by AYDEN | Partner: amr-solutions.de</span>
+        <div class="footer-legal">
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
