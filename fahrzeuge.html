@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fahrzeuge &ndash; Chauffeurservice M&uuml;nchen | AYDEN Chauffeurs &amp; Limousines</title>
+  <meta name="description" content="Unsere Fahrzeugflotte: First Class, Business Class, Business Van &amp; Electric Class. Premium-Limousinen &amp; Vans f&uuml;r Chauffeurservice &amp; Limousinenservice M&uuml;nchen.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+    /* Hero Slim */
+    .hero-slim {
+      position: relative; height: 50vh; min-height: 380px; max-height: 500px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; padding: 0;
+    }
+    .hero-slim .hero-bg { position: absolute; inset: 0; }
+    .hero-slim .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-slim .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+    }
+    .hero-slim .hero-content {
+      position: relative; z-index: 1; color: var(--color-white); max-width: 700px;
+    }
+    .hero-slim .breadcrumb {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-bottom: var(--space-sm);
+    }
+    .hero-slim .breadcrumb a { color: rgba(255,255,255,0.6); transition: color var(--transition-fast); }
+    .hero-slim .breadcrumb a:hover { color: var(--color-accent-gold); }
+    .hero-slim .breadcrumb .sep { color: var(--color-accent-gold); }
+    .hero-slim h1 {
+      font-family: var(--font-heading); font-size: var(--fs-h1);
+      font-weight: var(--fw-medium); line-height: 1.15; margin-bottom: var(--space-xs);
+    }
+    .hero-slim .hero-subtitle {
+      font-size: 1.0625rem; color: rgba(255,255,255,0.75); font-weight: var(--fw-light);
+    }
+
+    /* Intro */
+    .intro-section { max-width: 800px; margin: 0 auto; text-align: center; }
+    .intro-section h2 {
+      font-family: var(--font-heading); font-size: var(--fs-h2);
+      font-weight: var(--fw-medium); margin-bottom: var(--space-sm);
+    }
+    .intro-section p {
+      color: var(--color-text-secondary); font-size: 1.0625rem; line-height: var(--lh-body);
+    }
+
+    /* Vehicle Row */
+    .vehicle-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);
+      align-items: center; padding: var(--space-xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .vehicle-row:last-child { border-bottom: none; }
+    .vehicle-row.reversed { direction: rtl; }
+    .vehicle-row.reversed > * { direction: ltr; }
+
+    .vehicle-row-image {
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--space-md);
+    }
+    .vehicle-row-image img {
+      width: 100%; max-width: 480px; height: auto;
+    }
+
+    .vehicle-row-stars {
+      display: flex; gap: 2px; color: var(--color-accent-gold); margin-bottom: var(--space-xs);
+    }
+    .vehicle-row-stars svg { width: 16px; height: 16px; }
+
+    .vehicle-row-content h3 {
+      font-family: var(--font-heading); font-size: var(--fs-h2);
+      font-weight: var(--fw-semibold); color: var(--color-text-primary);
+      margin-bottom: var(--space-sm);
+    }
+    .vehicle-row-content .vehicle-row-desc {
+      font-size: var(--fs-body); color: var(--color-text-secondary);
+      line-height: var(--lh-body); margin-bottom: var(--space-md);
+    }
+
+    .vehicle-row-label {
+      font-size: var(--fs-label); font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-label); text-transform: uppercase;
+      color: var(--color-text-muted); margin-bottom: var(--space-xs);
+      display: block;
+    }
+
+    .vehicle-models-list {
+      display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-bottom: var(--space-md);
+    }
+    .vehicle-model-chip {
+      border: 1px solid var(--color-border); padding: 0.5rem 1rem;
+      font-size: var(--fs-small); line-height: 1.3;
+    }
+    .vehicle-model-chip .make {
+      display: block; font-weight: var(--fw-semibold); color: var(--color-text-primary);
+    }
+    .vehicle-model-chip .model {
+      display: block; color: var(--color-text-muted); font-size: var(--fs-label);
+    }
+
+    .vehicle-specs-list {
+      display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-lg);
+    }
+    .vehicle-spec {
+      display: flex; align-items: center; gap: 0.4rem;
+      background: var(--color-offwhite); border: 1px solid var(--color-border);
+      padding: 0.5rem 0.9rem; font-size: var(--fs-small); color: var(--color-text-secondary);
+    }
+    .vehicle-spec svg { width: 18px; height: 18px; color: var(--color-accent-gold); flex-shrink: 0; }
+    .vehicle-spec strong { color: var(--color-text-primary); }
+
+    @media (max-width: 1024px) {
+      .vehicle-row, .vehicle-row.reversed { grid-template-columns: 1fr; direction: ltr; }
+      .vehicle-row-image { order: -1; }
+    }
+    @media (max-width: 767px) {
+      .hero-slim { height: 40vh; min-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <span class="logo-text">shuttleservice</span>
+          <span class="logo-tagline">Powered by AYDEN</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">Services
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown nav-dropdown-wide">
+                <div class="dropdown-group">
+                  <span class="dropdown-heading">Shuttle Services</span>
+                  <a href="shuttle-service.html" class="dropdown-link">Shuttle Service</a>
+                  <a href="event-shuttle-service.html" class="dropdown-link">Event Shuttle Service</a>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-group">
+                  <span class="dropdown-heading">Spezialisierte Services</span>
+                  <a href="#" class="dropdown-link">Flughafen Shuttle</a>
+                  <a href="#" class="dropdown-link">Airport Transfer Service</a>
+                  <a href="#" class="dropdown-link">Business Shuttle Service</a>
+                  <a href="#" class="dropdown-link">VIP Shuttle Service</a>
+                  <a href="#" class="dropdown-link">Executive Shuttle</a>
+                  <a href="#" class="dropdown-link">Shuttle mit Sicherheitsfahrer</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">F&uuml;r wen
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown">
+                <a href="#" class="dropdown-link">Messe &amp; Ausstellung</a>
+                <a href="#" class="dropdown-link">Firmenfeier &amp; Gala</a>
+                <a href="#" class="dropdown-link">Kongress &amp; Konferenz</a>
+                <a href="#" class="dropdown-link">Hochzeit</a>
+                <a href="#" class="dropdown-link">Grossveranstaltung</a>
+                <a href="#" class="dropdown-link">VIP G&auml;ste</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="fahrzeuge.html" class="nav-link">Fahrzeuge</a></li>
+            <li class="nav-item"><a href="ueber-uns.html" class="nav-link">&Uuml;ber uns</a></li>
+            <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+          </ul>
+          <div class="header-cta">
+            <a href="kontakt.html" class="btn btn-primary btn-sm">Shuttle anfragen</a>
+          </div>
+        </nav>
+        <div class="nav-overlay"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======== HERO SLIM ======== -->
+    <section class="hero-slim">
+      <div class="hero-bg">
+        <img src="images/vehicles/hero-fahrzeuge.jpg" alt="Chauffeur bedient Navigationssystem im Premium-Fahrzeug" loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="breadcrumb">
+            <a href="index.html">Startseite</a>
+            <span class="sep">/</span>
+            <span>Fahrzeuge</span>
+          </div>
+          <h1>Unsere Fahrzeugflotte</h1>
+          <p class="hero-subtitle">Premium-Fahrzeuge f&uuml;r Chauffeurservice, Limousinenservice und Flughafentransfer in M&uuml;nchen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== INTRO ======== -->
+    <section>
+      <div class="container">
+        <div class="intro-section fade-up">
+          <span class="section-label">Unsere Flotte</span>
+          <h2>Die passende Fahrzeugklasse f&uuml;r jeden Anlass</h2>
+          <hr class="divider centered">
+          <p>Ob First Class Limousine f&uuml;r den Vorstand, Business Van f&uuml;r die Delegation oder Electric Class f&uuml;r nachhaltige Mobilit&auml;t &ndash; unsere Flotte bietet f&uuml;r jeden gesch&auml;ftlichen Anlass das passende Fahrzeug. Alle Fahrzeuge sind gepflegt, gepr&uuml;ft und mit professionellem Chauffeur unterwegs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== FAHRZEUGKLASSEN ======== -->
+    <section class="bg-offwhite">
+      <div class="container">
+
+        <!-- First Class -->
+        <div class="vehicle-row fade-up">
+          <div class="vehicle-row-content">
+            <div class="vehicle-row-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+            </div>
+            <h3>First Class</h3>
+            <p class="vehicle-row-desc">Erleben Sie unvergleichlichen Luxus und Komfort mit unserer First-Class-Kategorie. Mit Fahrzeugen wie der Mercedes-Benz S-Klasse oder dem Audi A8 bringen wir Vorst&auml;nde, F&uuml;hrungskr&auml;fte und VIP-G&auml;ste in Limousinenservice-Qualit&auml;t ans Ziel &ndash; elegant, leistungsstark und technisch auf h&ouml;chstem Niveau.</p>
+
+            <span class="vehicle-row-label">Verf&uuml;gbare Modelle</span>
+            <div class="vehicle-models-list">
+              <div class="vehicle-model-chip"><span class="make">Mercedes-Benz</span><span class="model">S-Klasse</span></div>
+              <div class="vehicle-model-chip"><span class="make">Audi</span><span class="model">A8</span></div>
+              <div class="vehicle-model-chip"><span class="make">BMW</span><span class="model">7er</span></div>
+            </div>
+
+            <span class="vehicle-row-label">Ausstattung</span>
+            <div class="vehicle-specs-list">
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span><strong>2</strong> Personen</span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                <span><strong>2</strong> Gep&auml;ck</span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Wasser <strong>inkl.</strong></span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+                <span>WiFi <strong>inkl.</strong></span>
+              </div>
+            </div>
+
+            <a href="kontakt.html" class="btn btn-primary">Jetzt anfragen</a>
+          </div>
+          <div class="vehicle-row-image">
+            <img src="images/vehicles/first-class.png" alt="Mercedes-Benz S-Klasse First Class Limousinenservice M&uuml;nchen" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Business Class -->
+        <div class="vehicle-row reversed fade-up">
+          <div class="vehicle-row-content">
+            <div class="vehicle-row-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+            </div>
+            <h3>Business Class</h3>
+            <p class="vehicle-row-desc">Unsere Business-Class-Fahrzeuge bieten erstklassigen Komfort und Stil f&uuml;r Gesch&auml;ftsreisende und anspruchsvolle Fahrg&auml;ste. Mit der Mercedes-Benz E-Klasse und dem Audi A6 kombinieren wir Eleganz, Leistung und Funktionalit&auml;t &ndash; ideal f&uuml;r den t&auml;glichen Chauffeurservice.</p>
+
+            <span class="vehicle-row-label">Verf&uuml;gbare Modelle</span>
+            <div class="vehicle-models-list">
+              <div class="vehicle-model-chip"><span class="make">Mercedes-Benz</span><span class="model">E-Klasse</span></div>
+              <div class="vehicle-model-chip"><span class="make">Audi</span><span class="model">A6</span></div>
+              <div class="vehicle-model-chip"><span class="make">BMW</span><span class="model">5er</span></div>
+            </div>
+
+            <span class="vehicle-row-label">Ausstattung</span>
+            <div class="vehicle-specs-list">
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span><strong>3</strong> Personen</span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                <span><strong>2</strong> Gep&auml;ck</span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Wasser <strong>inkl.</strong></span>
+              </div>
+            </div>
+
+            <a href="kontakt.html" class="btn btn-primary">Jetzt anfragen</a>
+          </div>
+          <div class="vehicle-row-image">
+            <img src="images/vehicles/business-class.png" alt="Mercedes-Benz E-Klasse Business Class Chauffeurservice M&uuml;nchen" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Business Van -->
+        <div class="vehicle-row fade-up">
+          <div class="vehicle-row-content">
+            <div class="vehicle-row-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+            </div>
+            <h3>Business Van</h3>
+            <p class="vehicle-row-desc">Unsere Business-Vans sind ideal f&uuml;r Flughafentransfer, Event-Shuttles, Delegationsreisen oder Gruppen-Transfers. Mit eleganter Ausstattung, modernen Annehmlichkeiten und zuverl&auml;ssiger Leistung ist die Mercedes-Benz V-Klasse die perfekte Wahl f&uuml;r Gruppen jeder Gr&ouml;&szlig;e.</p>
+
+            <span class="vehicle-row-label">Verf&uuml;gbare Modelle</span>
+            <div class="vehicle-models-list">
+              <div class="vehicle-model-chip"><span class="make">Mercedes-Benz</span><span class="model">V-Klasse</span></div>
+            </div>
+
+            <span class="vehicle-row-label">Ausstattung</span>
+            <div class="vehicle-specs-list">
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span><strong>6</strong> Personen</span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                <span><strong>6</strong> Gep&auml;ck</span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Wasser <strong>inkl.</strong></span>
+              </div>
+            </div>
+
+            <a href="kontakt.html" class="btn btn-primary">Jetzt anfragen</a>
+          </div>
+          <div class="vehicle-row-image">
+            <img src="images/vehicles/business-van.png" alt="Mercedes-Benz V-Klasse Business Van Flughafentransfer M&uuml;nchen" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Electric Class -->
+        <div class="vehicle-row reversed fade-up">
+          <div class="vehicle-row-content">
+            <div class="vehicle-row-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1"><path d="M10 1l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.4l6.1-.8z"/></svg>
+            </div>
+            <h3>Electric Class</h3>
+            <p class="vehicle-row-desc">Die Electric-Class-Fahrzeuge von AYDEN sind ideal f&uuml;r umweltbewusste Firmenkunden, Gesch&auml;ftsfahrten oder besondere Anl&auml;sse. Mit futuristischem Design, komfortablem Innenraum und fortschrittlichen Funktionen bieten sie eine Fahrerfahrung, die zugleich nachhaltig und luxuri&ouml;s ist.</p>
+
+            <span class="vehicle-row-label">Verf&uuml;gbare Modelle</span>
+            <div class="vehicle-models-list">
+              <div class="vehicle-model-chip"><span class="make">Mercedes-Benz</span><span class="model">EQE</span></div>
+              <div class="vehicle-model-chip"><span class="make">Tesla</span><span class="model">Model S / Y</span></div>
+            </div>
+
+            <span class="vehicle-row-label">Ausstattung</span>
+            <div class="vehicle-specs-list">
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span><strong>3</strong> Personen</span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                <span><strong>2</strong> Gep&auml;ck</span>
+              </div>
+              <div class="vehicle-spec">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                <span>Nachhaltig</span>
+              </div>
+            </div>
+
+            <a href="kontakt.html" class="btn btn-primary">Jetzt anfragen</a>
+          </div>
+          <div class="vehicle-row-image">
+            <img src="images/vehicles/electric-class.png" alt="Mercedes-Benz EQE Electric Class nachhaltiger Chauffeurservice M&uuml;nchen" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======== CTA SECTION ======== -->
+    <section class="cta-section" style="background-image: url('images/hero-hotel-vklasse.png');">
+      <div class="container">
+        <span class="section-label" style="color: var(--color-accent-gold);">Jetzt anfragen</span>
+        <h2>Die richtige Fahrzeugklasse f&uuml;r Ihr Unternehmen.</h2>
+        <p>Sprechen Sie mit uns &uuml;ber Ihre Anforderungen &ndash; wir beraten Sie zur passenden Fahrzeugwahl f&uuml;r Ihren Chauffeurservice.</p>
+        <div class="cta-buttons">
+          <a href="kontakt.html" class="btn btn-primary btn-lg">Jetzt anfragen</a>
+          <a href="tel:+4900000000" class="btn btn-ghost-light btn-lg">Jetzt anrufen</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-text">shuttleservice</span>
+            <span class="logo-tagline">Powered by AYDEN</span>
+          </div>
+          <p class="footer-description">Ihr Chauffeurservice &amp; Limousinenservice in M&uuml;nchen. Flughafentransfer, Business Shuttle &amp; Event-Logistik f&uuml;r Firmenkunden. Powered by AYDEN.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="shuttle-service.html">Shuttle Service</a></li>
+            <li><a href="event-shuttle-service.html">Event Shuttle</a></li>
+            <li><a href="#">Flughafen Shuttle</a></li>
+            <li><a href="#">Business Shuttle</a></li>
+            <li><a href="#">VIP Shuttle</a></li>
+            <li><a href="#">Executive Shuttle</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Standorte</h4>
+          <ul>
+            <li><a href="#">K&ouml;ln</a></li>
+            <li><a href="#">D&uuml;sseldorf</a></li>
+            <li><a href="#">Berlin</a></li>
+            <li><a href="#">M&uuml;nchen</a></li>
+            <li><a href="#">Frankfurt</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Unternehmen</h4>
+          <ul>
+            <li><a href="ueber-uns.html">&Uuml;ber uns</a></li>
+            <li><a href="fahrzeuge.html">Fahrzeuge</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 shuttleservice-event.de &ndash; Powered by AYDEN | Partner: amr-solutions.de</span>
+        <div class="footer-legal">
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
