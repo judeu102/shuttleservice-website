@@ -78,6 +78,10 @@
     .service-variants {
       display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md);
     }
+    .service-variants a:last-child:nth-child(odd) {
+      grid-column: 1 / -1; max-width: calc(50% - (var(--space-md) / 2));
+      margin: 0 auto;
+    }
     .variant-card {
       display: flex; flex-direction: column; background: var(--color-white);
       border: 1px solid var(--color-border); padding: var(--space-lg);
@@ -149,6 +153,7 @@
     }
     @media (max-width: 767px) {
       .service-variants { grid-template-columns: 1fr; }
+      .service-variants a:last-child:nth-child(odd) { max-width: 100%; }
       .usp-grid { grid-template-columns: 1fr; }
       .hero-slim { height: 40vh; min-height: 300px; }
     }
@@ -182,10 +187,10 @@
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-group">
                   <span class="dropdown-heading">Spezialisierte Services</span>
-                  <a href="#" class="dropdown-link">Flughafen Shuttle</a>
-                  <a href="#" class="dropdown-link">Airport Transfer Service</a>
-                  <a href="#" class="dropdown-link">VIP Shuttle Service</a>
-                  <a href="#" class="dropdown-link">Shuttle mit Sicherheitsfahrer</a>
+                  <a href="business-shuttle.html" class="dropdown-link">Business Shuttle</a>
+                  <a href="flughafentransfer.html" class="dropdown-link">Flughafentransfer</a>
+                  <a href="vip-chauffeurservice.html" class="dropdown-link">VIP Shuttle Service</a>
+                  <a href="shuttle-sicherheitsfahrer.html" class="dropdown-link">Shuttle mit Sicherheitsfahrer</a>
                 </div>
               </div>
             </li>
@@ -271,7 +276,7 @@
 
         <div class="service-variants">
 
-          <a href="#" class="variant-card fade-up">
+          <a href="flughafentransfer.html" class="variant-card fade-up">
             <span class="variant-label">Airport</span>
             <h3>Flughafentransfer M&uuml;nchen</h3>
             <p>P&uuml;nktlicher Flughafentransfer zum und vom Flughafen M&uuml;nchen (MUC). Wir &uuml;berwachen den Flug Ihrer G&auml;ste in Echtzeit &ndash; ideal f&uuml;r PAs, die Gesch&auml;ftsreisen organisieren.</p>
@@ -281,7 +286,7 @@
             </span>
           </a>
 
-          <a href="#" class="variant-card fade-up">
+          <a href="business-shuttle.html" class="variant-card fade-up">
             <span class="variant-label">Business</span>
             <h3>Business Shuttle Service</h3>
             <p>Zuverl&auml;ssige Transfers f&uuml;r Gesch&auml;ftsreisende. Ob t&auml;glicher Pendelverkehr oder einmaliger Transfer &ndash; professionell und diskret.</p>
@@ -291,27 +296,17 @@
             </span>
           </a>
 
-          <a href="#" class="variant-card fade-up">
+          <a href="vip-chauffeurservice.html" class="variant-card fade-up">
             <span class="variant-label">Exklusiv</span>
-            <h3>VIP Shuttle Service</h3>
-            <p>Exklusiver Transfer f&uuml;r besondere Anl&auml;sse und Pers&ouml;nlichkeiten. First-Class-Fahrzeuge, h&ouml;chste Diskretion und erstklassiger Komfort.</p>
+            <h3>VIP &amp; Executive Shuttle Service</h3>
+            <p>Exklusiver Transfer f&uuml;r F&uuml;hrungskr&auml;fte, besondere Anl&auml;sse und Pers&ouml;nlichkeiten. First-Class-Fahrzeuge, h&ouml;chste Diskretion und erstklassiger Komfort.</p>
             <span class="card-link">
               Mehr erfahren
               <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </a>
 
-          <a href="#" class="variant-card fade-up">
-            <span class="variant-label">Premium</span>
-            <h3>Executive Shuttle</h3>
-            <p>F&uuml;r F&uuml;hrungskr&auml;fte und Entscheider, die h&ouml;chste Anspr&uuml;che an Komfort, Zuverl&auml;ssigkeit und professionelle Betreuung stellen.</p>
-            <span class="card-link">
-              Mehr erfahren
-              <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </a>
-
-          <a href="#" class="variant-card fade-up">
+          <a href="fahrzeuge.html" class="variant-card fade-up">
             <span class="variant-label">Luxus</span>
             <h3>Limousinenservice M&uuml;nchen</h3>
             <p>Exklusiver Limousinenservice in M&uuml;nchen: S-Klasse, Audi A8 oder BMW 7er mit pers&ouml;nlichem Chauffeur. F&uuml;r Vorstandstermine, Kundenbesuche und repr&auml;sentative Anl&auml;sse.</p>
@@ -321,7 +316,7 @@
             </span>
           </a>
 
-          <a href="#" class="variant-card fade-up">
+          <a href="shuttle-sicherheitsfahrer.html" class="variant-card fade-up">
             <span class="variant-label">Sicherheit</span>
             <h3>Shuttle mit Sicherheitsfahrer</h3>
             <p>Premium Shuttle kombiniert mit diskretem Personenschutz. Geschulte Sicherheitsfahrer f&uuml;r sensible Eins&auml;tze und VIP-G&auml;ste.</p>
@@ -529,10 +524,10 @@
           <ul>
             <li><a href="shuttle-service.html">Shuttle Service</a></li>
             <li><a href="event-shuttle-service.html">Event Shuttle</a></li>
-            <li><a href="#">Flughafen Shuttle</a></li>
-            <li><a href="#">Business Shuttle</a></li>
-            <li><a href="#">VIP Shuttle</a></li>
-            <li><a href="#">Executive Shuttle</a></li>
+            <li><a href="flughafentransfer.html">Flughafentransfer</a></li>
+            <li><a href="business-shuttle.html">Business Shuttle</a></li>
+            <li><a href="vip-chauffeurservice.html">VIP Shuttle</a></li>
+            <li><a href="shuttle-sicherheitsfahrer.html">Shuttle &amp; Sicherheit</a></li>
           </ul>
         </div>
         <div class="footer-column">
