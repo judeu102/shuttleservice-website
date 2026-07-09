@@ -604,6 +604,7 @@
 }
 .intro-section p {
   color: var(--color-text-secondary); font-size: 1.0625rem; line-height: var(--lh-body);
+  margin-bottom: var(--space-md);
 }
 
 /* ---- USP Grid (subpages) ---- */
