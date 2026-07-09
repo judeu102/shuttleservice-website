@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Datenschutzerkl&auml;rung | AYDEN Chauffeurs &amp; Limousines</title>
-  <meta name="description" content="Datenschutzerkl&auml;rung von shuttleservice-event.de gem&auml;&szlig; DSGVO.">
-  <meta name="robots" content="noindex, follow">
+  <title>Kontakt | Chauffeurservice M&uuml;nchen anfragen | AYDEN</title>
+  <meta name="description" content="Chauffeurservice anfragen: Rufen Sie uns an oder senden Sie uns Ihre Anfrage &uuml;ber unser Kontaktformular. Wir melden uns mit einem individuellen Angebot.">
 
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/variables.css">
@@ -14,33 +13,82 @@
   <link rel="stylesheet" href="css/responsive.css">
 
   <style>
-    .legal-content {
-      max-width: 700px; margin: 0 auto;
+    .contact-layout {
+      display: grid; grid-template-columns: 1fr 1.3fr; gap: var(--space-xl);
+      align-items: start;
     }
-    .legal-content h2 {
-      font-family: var(--font-heading); font-size: var(--fs-h3);
-      font-weight: var(--fw-semibold); color: var(--color-text-primary);
-      margin-top: var(--space-lg); margin-bottom: var(--space-xs);
+    .contact-info h2 {
+      font-family: var(--font-heading); font-size: var(--fs-h2);
+      font-weight: var(--fw-medium); margin-bottom: var(--space-sm);
     }
-    .legal-content h2:first-child { margin-top: 0; }
-    .legal-content h3 {
+    .contact-info p {
+      color: var(--color-text-secondary); font-size: 1.0625rem;
+      line-height: var(--lh-body); margin-bottom: var(--space-lg);
+    }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--color-border); border-radius: 50%;
+      color: var(--color-accent-gold);
+    }
+    .contact-detail-icon svg { width: 18px; height: 18px; }
+    .contact-detail-label {
+      font-size: var(--fs-label); font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-label); text-transform: uppercase;
+      color: var(--color-text-muted); margin-bottom: 2px; display: block;
+    }
+    .contact-detail-value {
       font-family: var(--font-heading); font-size: var(--fs-h4);
       font-weight: var(--fw-semibold); color: var(--color-text-primary);
-      margin-top: var(--space-md); margin-bottom: var(--space-2xs);
     }
-    .legal-content p {
-      font-size: var(--fs-body); color: var(--color-text-secondary);
-      line-height: var(--lh-body); margin-bottom: var(--space-xs);
+    .contact-detail-value a { color: inherit; text-decoration: none; }
+    .contact-detail-value a:hover { color: var(--color-accent-gold); }
+
+    .contact-form-panel {
+      background: var(--color-offwhite); border: 1px solid var(--color-border);
+      padding: var(--space-lg);
     }
-    .legal-content ul {
-      margin: 0 0 var(--space-sm) 0; padding-left: 1.2rem; list-style: disc;
+    .contact-form-panel h3 {
+      font-family: var(--font-heading); font-size: var(--fs-h3);
+      font-weight: var(--fw-semibold); margin-bottom: var(--space-xs);
     }
-    .legal-content ul li {
-      font-size: var(--fs-body); color: var(--color-text-secondary);
-      line-height: var(--lh-body); margin-bottom: var(--space-2xs);
+    .contact-form-panel > p {
+      font-size: var(--fs-small); color: var(--color-text-muted);
+      margin-bottom: var(--space-md);
     }
-    .legal-content a { color: var(--color-accent-gold); }
-    .legal-content a:hover { text-decoration: underline; }
+
+    #hubspot-form input[type="text"],
+    #hubspot-form input[type="email"],
+    #hubspot-form input[type="tel"],
+    #hubspot-form textarea,
+    #hubspot-form select {
+      width: 100%; padding: 0.75rem 1rem; margin-bottom: var(--space-sm);
+      border: 1px solid var(--color-border); background: var(--color-white);
+      font-family: var(--font-body); font-size: var(--fs-body);
+      color: var(--color-text-primary);
+    }
+    #hubspot-form label {
+      display: block; font-size: var(--fs-small); color: var(--color-text-secondary);
+      margin-bottom: 0.3rem;
+    }
+    #hubspot-form .hs-button {
+      background: var(--color-cta-bg); color: var(--color-cta-text);
+      border: none; padding: 0.9rem 2rem; font-size: var(--fs-small);
+      font-weight: var(--fw-semibold); letter-spacing: var(--ls-button);
+      text-transform: uppercase; cursor: pointer; transition: background var(--transition-fast);
+    }
+    #hubspot-form .hs-button:hover { background: var(--color-cta-hover); }
+    #hubspot-form ul { list-style: none; padding: 0; margin: 0 0 var(--space-sm) 0; }
+    #hubspot-form .hs-error-msgs { color: #b23b3b; font-size: var(--fs-label); margin-top: -0.5rem; margin-bottom: var(--space-sm); }
+    #hubspot-form .hs-form-required { color: var(--color-accent-gold); }
+
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr; gap: var(--space-lg); }
+    }
   </style>
 </head>
 <body>
@@ -119,9 +167,9 @@
   <main>
 
     <!-- ======== HERO SLIM ======== -->
-    <section class="hero-slim" style="height: 30vh; min-height: 220px;">
+    <section class="hero-slim">
       <div class="hero-bg">
-        <img src="images/hero-hotel-vklasse.png" alt="" loading="eager">
+        <img src="images/shuttle6.png" alt="Chauffeur verlaedt Gepaeck in den Kofferraum vor der Abfahrt" loading="eager">
       </div>
       <div class="hero-overlay"></div>
       <div class="container">
@@ -129,67 +177,60 @@
           <div class="breadcrumb">
             <a href="index.html">Startseite</a>
             <span class="sep">/</span>
-            <span>Datenschutz</span>
+            <span>Kontakt</span>
           </div>
-          <h1>Datenschutzerkl&auml;rung</h1>
+          <h1>Chauffeurservice anfragen</h1>
+          <p class="hero-subtitle">Schildern Sie uns Ihren Termin, wir melden uns mit einem individuellen Angebot.</p>
         </div>
       </div>
     </section>
 
-    <!-- ======== LEGAL CONTENT ======== -->
+    <!-- ======== KONTAKT ======== -->
     <section>
       <div class="container">
-        <div class="legal-content">
+        <div class="contact-layout">
 
-          <h2>1. Verantwortlicher</h2>
-          <p>
-            Verantwortlicher f&uuml;r die Datenverarbeitung auf dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:
-          </p>
-          <p>
-            DCP Solutions GmbH<br>
-            Vaterstettenerstr. 9A<br>
-            85598 Baldham<br>
-            Telefon: +49 8106 317 88 90<br>
-            E-Mail: <a href="mailto:mail@rideayden.com">mail@rideayden.com</a>
-          </p>
+          <div class="contact-info fade-up">
+            <span class="section-label">Kontakt</span>
+            <h2>Sprechen Sie direkt mit uns.</h2>
+            <p>F&uuml;r kurzfristige Anfragen erreichen Sie uns telefonisch am schnellsten. F&uuml;r detaillierte Anfragen mit mehreren Terminen oder Fahrzeugen nutzen Sie gerne das Formular, wir melden uns in der Regel innerhalb eines Werktags.</p>
 
-          <h2>2. Allgemeines zur Datenverarbeitung</h2>
-          <p>Wir verarbeiten personenbezogene Daten unserer Nutzer grunds&auml;tzlich nur, soweit dies zur Bereitstellung einer funktionsf&auml;higen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Verarbeitung personenbezogener Daten erfolgt regelm&auml;&szlig;ig nur nach Einwilligung des Nutzers oder auf Grundlage einer gesetzlichen Erlaubnis nach Art. 6 Abs. 1 DSGVO.</p>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <span class="contact-detail-label">Telefon</span>
+                <span class="contact-detail-value"><a href="tel:+4981063178890">+49 8106 317 88 90</a></span>
+              </div>
+            </div>
 
-          <h2>3. Hosting</h2>
-          <p>Diese Website wird bei Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA, gehostet (Cloudflare Pages). Cloudflare verarbeitet dabei automatisch Verbindungsdaten wie die IP-Adresse des zugreifenden Endger&auml;ts, Datum und Uhrzeit des Zugriffs, aufgerufene Seiten sowie Browser- und Betriebssysteminformationen. Diese Daten werden zur Bereitstellung, Sicherheit und Stabilit&auml;t der Website verarbeitet und in der Regel nach kurzer Zeit automatisch gel&ouml;scht.</p>
-          <p>Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und funktionsf&auml;higen Bereitstellung unserer Website gem&auml;&szlig; Art. 6 Abs. 1 lit. f DSGVO. Soweit Daten in die USA &uuml;bertragen werden, st&uuml;tzt sich dies auf die von Cloudflare bereitgestellten Standardvertragsklauseln.</p>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+              </div>
+              <div>
+                <span class="contact-detail-label">E-Mail</span>
+                <span class="contact-detail-value"><a href="mailto:mail@rideayden.com">mail@rideayden.com</a></span>
+              </div>
+            </div>
 
-          <h2>4. Schriftarten</h2>
-          <p>Diese Website nutzt Web Fonts (Cormorant Garamond, Inter), die lokal auf unserem eigenen Server gehostet werden. Beim Aufruf der Website findet dadurch keine Verbindung zu Servern von Google oder anderen Schriftarten-Anbietern statt, es werden keine Daten an Dritte &uuml;bertragen.</p>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 00-10 10c0 7 10 12 10 12s10-5 10-12A10 10 0 0012 2z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <div>
+                <span class="contact-detail-label">Standorte</span>
+                <span class="contact-detail-value" style="font-size: var(--fs-body);">M&uuml;nchen &middot; Frankfurt &middot; Berlin &middot; D&uuml;sseldorf &middot; K&ouml;ln</span>
+              </div>
+            </div>
+          </div>
 
-          <h2>5. Kontaktformular (HubSpot)</h2>
-          <p>Auf unserer Kontaktseite nutzen wir das Formular-Tool von HubSpot, Inc., 2 Canal Park, Cambridge, MA 02141, USA (f&uuml;r EU-Nutzer verarbeitet &uuml;ber die HubSpot-Infrastruktur in der EU, Region &bdquo;eu1&ldquo;). Wenn Sie das Formular ausf&uuml;llen und absenden, werden die von Ihnen eingegebenen Daten (z. B. Name, E-Mail-Adresse, Anfrageninhalt) an HubSpot &uuml;bermittelt und dort verarbeitet, damit wir Ihre Anfrage bearbeiten k&ouml;nnen.</p>
-          <p>Beim Laden des Formulars setzt HubSpot ein technisch notwendiges Cookie (u. a. <code>hubspotutk</code>), um Formular-&uuml;bermittlungen eindeutig zuordnen und Spam-Einreichungen erkennen zu k&ouml;nnen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage der Vorbereitung oder Erf&uuml;llung eines Vertrags dient, andernfalls Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an einer funktionierenden Anfragenbearbeitung. Weitere Informationen finden Sie in der Datenschutzerkl&auml;rung von HubSpot unter <a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">legal.hubspot.com/privacy-policy</a>.</p>
-
-          <h2>6. Cookies</h2>
-          <p>Abgesehen von dem technisch notwendigen Cookie des Kontaktformulars (siehe Punkt 5) setzt diese Website keine Cookies zu Analyse- oder Marketingzwecken ein. Sollte sich dies &auml;ndern, werden wir Sie an dieser Stelle informieren und, soweit erforderlich, Ihre Einwilligung einholen.</p>
-
-          <h2>7. Kontaktaufnahme per Telefon oder E-Mail</h2>
-          <p>Wenn Sie uns per E-Mail oder Telefon kontaktieren, werden die von Ihnen mitgeteilten Daten (z. B. Name, Kontaktdaten, Anfrageninhalt) von uns gespeichert und verarbeitet, um Ihre Anfrage zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage der Vorbereitung oder Erf&uuml;llung eines Vertrags dient, andernfalls Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an der Beantwortung von Anfragen.</p>
-
-          <h2>8. Ihre Rechte als betroffene Person</h2>
-          <p>Ihnen stehen gegen&uuml;ber uns als Verantwortlichem folgende Rechte in Bezug auf die Sie betreffenden personenbezogenen Daten zu:</p>
-          <ul>
-            <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
-            <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
-            <li>Recht auf L&ouml;schung (Art. 17 DSGVO)</li>
-            <li>Recht auf Einschr&auml;nkung der Verarbeitung (Art. 18 DSGVO)</li>
-            <li>Recht auf Daten&uuml;bertragbarkeit (Art. 20 DSGVO)</li>
-            <li>Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
-          </ul>
-          <p>Zur Aus&uuml;bung dieser Rechte k&ouml;nnen Sie sich jederzeit &uuml;ber die oben genannten Kontaktdaten an uns wenden.</p>
-
-          <h2>9. Beschwerderecht bei einer Aufsichtsbeh&ouml;rde</h2>
-          <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbeh&ouml;rde &uuml;ber die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren. Zust&auml;ndig ist in der Regel die Aufsichtsbeh&ouml;rde des Bundeslandes, in dem sich unser Unternehmenssitz befindet, das Bayerische Landesamt f&uuml;r Datenschutzaufsicht.</p>
-
-          <h2>10. SSL-/TLS-Verschl&uuml;sselung</h2>
-          <p>Diese Website nutzt aus Sicherheitsgr&uuml;nden eine SSL-/TLS-Verschl&uuml;sselung zur &Uuml;bertragung vertraulicher Inhalte. Eine verschl&uuml;sselte Verbindung erkennen Sie an dem Schloss-Symbol in Ihrem Browser und an der Adresszeile, die mit &bdquo;https://&ldquo; beginnt.</p>
+          <div class="contact-form-panel fade-up">
+            <h3>Ihre Anfrage</h3>
+            <p>Route, Termin und Fahrzeugwunsch, wir melden uns mit einem passenden Angebot.</p>
+            <div id="hubspot-form"></div>
+          </div>
 
         </div>
       </div>
@@ -248,6 +289,15 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+  <script>
+    hbspt.forms.create({
+      portalId: "147781968",
+      formId: "c4108251-67ae-4a23-b310-435af5554c15",
+      region: "eu1",
+      target: "#hubspot-form"
+    });
+  </script>
 
 </body>
 </html>
