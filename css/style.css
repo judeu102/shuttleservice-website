@@ -313,6 +313,51 @@ section.bg-dark {
   );
 }
 
+/* Bright hero variant — light, airy overlay with dark text */
+.hero.hero-bright .hero-overlay {
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.6) 0%,
+    rgba(255,255,255,0.32) 45%,
+    rgba(255,255,255,0.05) 100%
+  );
+}
+
+.hero.hero-bright .hero-content {
+  color: var(--color-text-primary);
+}
+
+.hero.hero-bright .hero-content .section-label {
+  color: var(--color-text-secondary);
+}
+
+.hero.hero-bright .hero-content .hero-subtitle {
+  color: var(--color-text-secondary);
+}
+
+.hero.hero-bright .hero-badge {
+  color: rgba(26,26,26,0.55);
+}
+
+.hero.hero-bright .hero-badge::before {
+  background: var(--color-accent-gold);
+}
+
+.hero.hero-bright .btn-ghost-light {
+  color: var(--color-text-primary);
+  border-color: rgba(26,26,26,0.35);
+}
+
+.hero.hero-bright .btn-ghost-light:hover {
+  background: var(--color-text-primary);
+  color: var(--color-white);
+  border-color: var(--color-text-primary);
+}
+
+.hero.hero-bright .hero-scroll {
+  color: rgba(26,26,26,0.45);
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
