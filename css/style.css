@@ -506,6 +506,15 @@ section.bg-dark {
   margin-bottom: var(--space-sm);
 }
 
+.ayden-content p a {
+  color: var(--color-accent-gold);
+  text-decoration: underline;
+}
+
+.ayden-content p a:hover {
+  color: var(--color-accent-gold-hover);
+}
+
 /* ========================================
    FOOTER
    ======================================== */
