@@ -333,7 +333,7 @@ section.bg-dark {
   margin-bottom: var(--space-sm);
 }
 
-.hero-content .hero-subtitle {
+.hero .hero-content .hero-subtitle {
   font-size: 1.125rem;
   font-weight: var(--fw-light);
   color: rgba(255,255,255,0.85);

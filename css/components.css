@@ -562,11 +562,11 @@
 
 /* ---- Hero Slim (subpages) ---- */
 .hero-slim {
-  position: relative; height: 74vh; min-height: 560px; max-height: 760px;
+  position: relative; height: 84vh; min-height: 620px; max-height: 840px;
   display: flex; align-items: center; justify-content: center;
   text-align: center; overflow: hidden; padding: 0;
 }
-.hero-slim.hero-slim-lg { height: 86vh; min-height: 640px; max-height: 880px; }
+.hero-slim.hero-slim-lg { height: 92vh; min-height: 680px; max-height: 920px; }
 .hero-slim .hero-bg { position: absolute; inset: 0; }
 .hero-slim .hero-bg img {
   width: 100%; height: 100%; object-fit: cover;
@@ -788,7 +788,7 @@
   .blog-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 767px) {
-  .hero-slim { height: 58vh; min-height: 420px; }
-  .hero-slim.hero-slim-lg { height: 68vh; min-height: 480px; }
+  .hero-slim { height: 66vh; min-height: 460px; }
+  .hero-slim.hero-slim-lg { height: 74vh; min-height: 500px; }
   .usp-grid { grid-template-columns: 1fr; }
 }
