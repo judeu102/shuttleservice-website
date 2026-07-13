@@ -327,6 +327,12 @@ section.bg-dark {
   color: var(--color-text-primary);
 }
 
+.hero.hero-bright .hero-content h1,
+.hero.hero-bright .hero-content .section-label,
+.hero.hero-bright .hero-content .hero-subtitle {
+  text-shadow: 0 2px 20px rgba(255,255,255,0.7), 0 1px 3px rgba(255,255,255,0.6);
+}
+
 .hero.hero-bright .hero-content .section-label {
   color: var(--color-text-secondary);
 }
