@@ -500,18 +500,11 @@ section.bg-dark {
   text-align: center;
 }
 
-.ayden-logo-text {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  font-weight: var(--fw-bold);
-  color: var(--color-text-primary);
-  letter-spacing: 0.05em;
+.ayden-logo-img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
   margin-bottom: var(--space-sm);
-}
-
-.ayden-logo-sub {
-  font-size: var(--fs-small);
-  color: var(--color-text-muted);
 }
 
 .ayden-content h2 {
