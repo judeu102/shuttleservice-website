@@ -82,6 +82,8 @@ section.bg-dark {
   right: 0;
   z-index: 1000;
   height: var(--header-height);
+  display: flex;
+  align-items: center;
   background: rgba(255,255,255,0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -374,6 +376,10 @@ section.bg-dark {
   z-index: 1;
   max-width: 650px;
   color: var(--color-white);
+}
+
+.hero .hero-content {
+  margin-top: -60px;
 }
 
 .hero-content .section-label {
