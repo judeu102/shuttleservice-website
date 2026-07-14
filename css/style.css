@@ -132,12 +132,15 @@ section.bg-dark {
 .main-nav {
   display: flex;
   align-items: center;
+  flex: 1;
   gap: var(--space-md);
 }
 
 .nav-list {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: 1;
   gap: 0.25rem;
 }
 
@@ -176,8 +179,10 @@ section.bg-dark {
   min-width: 260px;
   background: var(--color-white);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   padding: var(--space-xs) 0;
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
@@ -481,6 +486,7 @@ section.bg-dark {
   padding: var(--space-xl);
   background: var(--color-offwhite);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   text-align: center;
 }
 
