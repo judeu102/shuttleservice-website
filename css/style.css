@@ -98,6 +98,7 @@ section.bg-dark {
 }
 
 .header-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -135,15 +136,18 @@ section.bg-dark {
   display: flex;
   align-items: center;
   flex: 1;
+  justify-content: flex-end;
   gap: var(--space-md);
 }
 
 .nav-list {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex: 1;
   gap: 0.25rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .nav-item {
