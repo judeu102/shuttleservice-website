@@ -328,9 +328,9 @@ section.bg-dark {
 .hero.hero-bright .hero-overlay {
   background: linear-gradient(
     to right,
-    rgba(255,255,255,0.6) 0%,
-    rgba(255,255,255,0.32) 45%,
-    rgba(255,255,255,0.05) 100%
+    rgba(255,255,255,0.88) 0%,
+    rgba(255,255,255,0.6) 50%,
+    rgba(255,255,255,0.15) 100%
   );
 }
 
