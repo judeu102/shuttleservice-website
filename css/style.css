@@ -370,7 +370,7 @@ section.bg-dark {
 }
 
 .hero.hero-bright .hero-buttons .btn-primary:hover {
-  background: var(--color-accent-gold);
+  background: var(--color-cta-bg);
   color: var(--color-white);
 }
 
