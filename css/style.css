@@ -343,13 +343,14 @@ section.bg-dark {
   color: var(--color-text-secondary);
 }
 
+.hero.hero-bright .hero-content h1,
 .hero.hero-bright .hero-content .hero-subtitle {
   display: inline-block;
   color: var(--color-text-primary);
   background: rgba(255,255,255,0.72);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  padding: 0.6em 0.9em;
+  padding: 0.5em 0.7em;
   border-radius: var(--radius-md);
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
