@@ -364,6 +364,16 @@ section.bg-dark {
   color: rgba(255,255,255,0.9);
 }
 
+.hero.hero-bright .hero-buttons .btn-primary {
+  background: var(--color-offwhite);
+  color: var(--color-text-primary);
+}
+
+.hero.hero-bright .hero-buttons .btn-primary:hover {
+  background: var(--color-accent-gold);
+  color: var(--color-white);
+}
+
 .hero.hero-bright .hero-badge {
   color: rgba(255,255,255,0.65);
 }
