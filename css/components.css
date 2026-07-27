@@ -228,6 +228,7 @@
 .split-image {
   position: relative;
   overflow: hidden;
+  border-radius: var(--radius-md);
 }
 
 .split-image img {
