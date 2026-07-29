@@ -188,6 +188,26 @@
     padding-top: var(--space-2xl);
   }
 
+  /* right-aligned hero reverts to left on mobile (cleaner on narrow screens) */
+  .hero.hero-right .hero-content {
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .hero.hero-right .hero-buttons {
+    justify-content: flex-start;
+  }
+  .hero.hero-right.hero-bright .hero-content::before {
+    inset: -14% -22% -16% -18%;
+    background: radial-gradient(
+      ellipse 78% 72% at 34% 48%,
+      rgba(16,18,22,0.74) 0%,
+      rgba(16,18,22,0.55) 45%,
+      rgba(16,18,22,0.2) 70%,
+      rgba(16,18,22,0) 84%
+    );
+  }
+
   .hero-buttons {
     flex-direction: column;
   }

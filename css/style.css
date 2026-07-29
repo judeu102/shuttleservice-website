@@ -387,6 +387,26 @@ section.bg-dark {
   color: rgba(255,255,255,0.6);
 }
 
+/* Hero text on the right (image subject sits on the left) */
+.hero.hero-right .hero-content {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+.hero.hero-right .hero-buttons {
+  justify-content: flex-end;
+}
+.hero.hero-right.hero-bright .hero-content::before {
+  inset: -14% -18% -16% -22%;
+  background: radial-gradient(
+    ellipse 78% 72% at 66% 48%,
+    rgba(16,18,22,0.74) 0%,
+    rgba(16,18,22,0.55) 45%,
+    rgba(16,18,22,0.2) 70%,
+    rgba(16,18,22,0) 84%
+  );
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
