@@ -895,7 +895,7 @@
   display: flex;
   gap: var(--space-sm);
   width: max-content;
-  animation: gallery-scroll 90s linear infinite;
+  animation: gallery-scroll 55s linear infinite;
 }
 .gallery-marquee:hover .gallery-track { animation-play-state: paused; }
 .gallery-track img {
@@ -914,7 +914,7 @@
 }
 @media (max-width: 767px) {
   .gallery-track img { height: 220px; }
-  .gallery-track { animation-duration: 60s; }
+  .gallery-track { animation-duration: 38s; }
 }
 @media (prefers-reduced-motion: reduce) {
   .gallery-track { animation: none; }
