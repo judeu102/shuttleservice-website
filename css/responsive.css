@@ -207,6 +207,9 @@
       rgba(16,18,22,0) 84%
     );
   }
+  .hero.hero-right.hero-bright .hero-bg img {
+    object-position: 42% 85%;
+  }
 
   .hero-buttons {
     flex-direction: column;
