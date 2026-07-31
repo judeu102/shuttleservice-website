@@ -217,6 +217,14 @@
   align-items: center;
 }
 
+.dispo-graphic svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
 .split.reversed {
   direction: rtl;
 }
