@@ -928,3 +928,23 @@
   .gallery-track { animation: none; }
   .gallery-marquee { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
+
+/* ---- Language Switcher ---- */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: var(--space-sm);
+}
+.lang-opt {
+  display: inline-flex;
+  width: 26px;
+  height: 18px;
+  border-radius: 3px;
+  overflow: hidden;
+  opacity: 0.4;
+  transition: opacity var(--transition-fast), box-shadow var(--transition-fast);
+}
+.lang-opt:hover { opacity: 0.8; }
+.lang-opt.active { opacity: 1; box-shadow: 0 0 0 2px var(--color-accent-gold); }
+.lang-opt .flag { width: 100%; height: 100%; display: block; object-fit: cover; }
