@@ -215,6 +215,9 @@
   .hero .hero-content .hero-sub-full { display: none; }
   .hero .hero-content .hero-sub-short { display: block; }
 
+  /* kontakt: portrait mobile header (businessman entering) framed on the subject */
+  .hero-slim-contact .hero-bg img { object-position: 42% 55%; }
+
   .hero-buttons {
     flex-direction: column;
   }
