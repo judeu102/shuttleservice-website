@@ -211,6 +211,10 @@
     object-position: 50% 50%;
   }
 
+  /* shorter hero copy on mobile so it doesn't cover the image */
+  .hero .hero-content .hero-sub-full { display: none; }
+  .hero .hero-content .hero-sub-short { display: block; }
+
   .hero-buttons {
     flex-direction: column;
   }
@@ -218,6 +222,15 @@
   .hero-buttons .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  /* homepage hero CTA: compact (not full-width) so it sits lighter on the image */
+  .hero.hero-bright .hero-buttons {
+    flex-direction: row;
+  }
+  .hero.hero-bright .hero-buttons .btn {
+    width: auto;
+    padding: 0.72rem 1.5rem;
   }
 
   .hero-scroll {

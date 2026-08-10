@@ -445,6 +445,9 @@ section.bg-dark {
   max-width: 480px;
 }
 
+/* short hero subtitle is mobile-only; hidden on desktop */
+.hero-sub-short { display: none; }
+
 .hero-buttons {
   display: flex;
   gap: var(--space-sm);
