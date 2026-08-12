@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>Vielen Dank &ndash; Ihre Anfrage ist eingegangen | shuttleservice-event.de</title>
+  <meta name="description" content="Ihre Anfrage ist bei uns eingegangen. Unser Team meldet sich schnellstm&ouml;glich mit einem individuellen Angebot.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* confirmation hero */
+    .confirm-icon {
+      width: 82px; height: 82px; margin: 0 auto var(--space-md);
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid rgba(255,255,255,0.9); border-radius: 50%; color: #fff;
+    }
+    .confirm-icon svg { width: 40px; height: 40px; }
+
+    /* white detail section */
+    .confirm-details { text-align: center; }
+    .confirm-details-inner { max-width: 680px; margin: 0 auto; }
+    .confirm-sub { font-size: 1.0625rem; color: var(--color-text-secondary); margin-bottom: var(--space-lg); }
+    .confirm-contacts {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+    .confirm-contact { display: inline-flex; align-items: center; gap: 0.6rem; }
+    .confirm-contact svg { width: 20px; height: 20px; color: var(--color-accent-gold); flex-shrink: 0; }
+    .confirm-contact a {
+      font-family: var(--font-heading); font-size: var(--fs-h4);
+      font-weight: var(--fw-semibold); color: var(--color-text-primary); text-decoration: none;
+    }
+    .confirm-contact a:hover { color: var(--color-accent-gold); }
+    .confirm-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); }
+
+    .confirm-services { margin-top: var(--space-2xl); }
+    .confirm-services > .section-header { text-align: center; margin-bottom: var(--space-lg); }
+    .confirm-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+    .confirm-card {
+      display: block; text-decoration: none; color: inherit;
+      border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden;
+      background: var(--color-white); transition: box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+    .confirm-card:hover { box-shadow: var(--shadow-md); border-color: var(--color-accent-gold); }
+    .confirm-card-img { aspect-ratio: 16 / 10; overflow: hidden; }
+    .confirm-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .confirm-card-body { padding: var(--space-md); }
+    .confirm-card-body h3 {
+      font-family: var(--font-heading); font-size: var(--fs-h4);
+      font-weight: var(--fw-semibold); margin-bottom: 0.35rem;
+    }
+    .confirm-card-body p { font-size: var(--fs-small); color: var(--color-text-secondary); }
+
+    @media (max-width: 767px) {
+      .confirm-cards { grid-template-columns: 1fr; }
+      .confirm-contacts { flex-direction: column; gap: var(--space-sm); align-items: center; }
+      .confirm-buttons { flex-direction: column; }
+      .confirm-buttons .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <span class="logo-text">shuttleservice</span>
+          <span class="logo-tagline">Powered by AYDEN</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">Services
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown nav-dropdown-wide">
+                <div class="dropdown-group">
+                  <span class="dropdown-heading">Shuttle Services</span>
+                  <a href="shuttle-service.html" class="dropdown-link">Shuttle Service</a>
+                  <a href="event-shuttle-service.html" class="dropdown-link">Event Shuttle Service</a>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-group">
+                  <span class="dropdown-heading">Spezialisierte Services</span>
+                  <a href="business-shuttle.html" class="dropdown-link">Business Shuttle</a>
+                  <a href="flughafentransfer.html" class="dropdown-link">Flughafen-Transfer</a>
+                  <a href="vip-chauffeurservice.html" class="dropdown-link">VIP Shuttle Service</a>
+                  <a href="shuttle-sicherheitsfahrer.html" class="dropdown-link">Shuttle mit Sicherheitsfahrer</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">F&uuml;r wen
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown">
+                <a href="shuttle-messe-ausstellung.html" class="dropdown-link">Messe &amp; Ausstellung</a>
+                <a href="shuttle-firmenfeier-gala.html" class="dropdown-link">Firmenfeier &amp; Gala</a>
+                <a href="shuttle-kongress-konferenz.html" class="dropdown-link">Kongress &amp; Konferenz</a>
+                <a href="shuttle-grossveranstaltung.html" class="dropdown-link">Gro&szlig;veranstaltung</a>
+                <a href="vip-chauffeurservice.html" class="dropdown-link">VIP &amp; Executive</a>
+              </div>
+            </li>
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link">Standorte
+                <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="nav-dropdown">
+                <a href="chauffeurservice-muenchen.html" class="dropdown-link">M&uuml;nchen</a>
+                <a href="chauffeurservice-frankfurt.html" class="dropdown-link">Frankfurt</a>
+                <a href="chauffeurservice-berlin.html" class="dropdown-link">Berlin</a>
+                <a href="chauffeurservice-duesseldorf.html" class="dropdown-link">D&uuml;sseldorf</a>
+                <a href="chauffeurservice-koeln.html" class="dropdown-link">K&ouml;ln</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="fahrzeuge.html" class="nav-link">Fahrzeuge</a></li>
+            <li class="nav-item"><a href="ueber-uns.html" class="nav-link">&Uuml;ber uns</a></li>
+            <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+          </ul>
+          <div class="lang-switch">
+            <a href="danke.html" class="lang-opt active" hreflang="de" aria-label="Deutsch" title="Deutsch"><svg class="flag" viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="3" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg></a>
+            <a href="en/danke.html" class="lang-opt" hreflang="en" aria-label="English" title="English"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><rect width="60" height="30"/></clipPath><g clip-path="url(#ukc)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 L30,30 M0,15 L60,15" stroke="#fff" stroke-width="10"/><path d="M30,0 L30,30 M0,15 L60,15" stroke="#C8102E" stroke-width="6"/></g></svg></a>
+          </div>
+          <div class="header-cta">
+            <a href="kontakt.html" class="btn btn-primary btn-sm">Shuttle anfragen</a>
+          </div>
+        </nav>
+        <div class="nav-overlay"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======== BEST&Auml;TIGUNG (HERO) ======== -->
+    <section class="hero-slim" style="height:auto; min-height:620px; max-height:760px;">
+      <div class="hero-bg">
+        <img src="images/danke.jpg" alt="Gast im Fond einer schwarzen Limousine, Chauffeur wartet" loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="confirm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <span class="section-label" style="color: var(--color-accent-gold);">Anfrage best&auml;tigt</span>
+          <h1>Vielen Dank &ndash; Ihre Anfrage ist eingegangen.</h1>
+          <p class="hero-subtitle">Unser Team meldet sich schnellstm&ouml;glich bei Ihnen, in der Regel innerhalb eines Werktags, mit einem individuellen Angebot.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== DETAILS ======== -->
+    <section class="confirm-details">
+      <div class="container">
+        <div class="confirm-details-inner">
+          <p class="confirm-sub">Sollten Sie weitere Fragen haben, erreichen Sie uns jederzeit direkt:</p>
+          <div class="confirm-contacts">
+            <span class="confirm-contact">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+4981063178890">+49 8106 317 88 90</a>
+            </span>
+            <span class="confirm-contact">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+              <a href="mailto:mail@rideayden.com">mail@rideayden.com</a>
+            </span>
+          </div>
+          <div class="confirm-buttons">
+            <a href="index.html" class="btn btn-primary btn-lg">Zur Startseite</a>
+            <a href="fahrzeuge.html" class="btn btn-ghost btn-lg">Fahrzeuge ansehen</a>
+          </div>
+        </div>
+
+        <!-- weitere Servicebereiche -->
+        <div class="confirm-services">
+          <div class="section-header">
+            <span class="section-label">Mehr von uns</span>
+            <h2>Entdecken Sie weitere Servicebereiche</h2>
+          </div>
+          <div class="confirm-cards">
+            <a href="business-shuttle.html" class="confirm-card">
+              <div class="confirm-card-img"><img src="images/mercedes-vklasse-backstein.jpg" alt="Business Shuttle mit Chauffeur" loading="lazy"></div>
+              <div class="confirm-card-body">
+                <h3>Business Shuttle</h3>
+                <p>Zuverl&auml;ssige Chauffeurfahrten f&uuml;r Firmenkunden und Gesch&auml;ftsreisen.</p>
+              </div>
+            </a>
+            <a href="event-shuttle-service.html" class="confirm-card">
+              <div class="confirm-card-img"><img src="images/graded/gv4.jpg" alt="Event Shuttle Service f&uuml;r Firmenevents" loading="lazy"></div>
+              <div class="confirm-card-body">
+                <h3>Event Shuttle</h3>
+                <p>Koordinierte Shuttle-Logistik f&uuml;r Messen, Galas und Firmenevents.</p>
+              </div>
+            </a>
+            <a href="flughafentransfer.html" class="confirm-card">
+              <div class="confirm-card-img"><img src="images/shuttle6.png" alt="Flughafen-Transfer mit Chauffeur" loading="lazy"></div>
+              <div class="confirm-card-body">
+                <h3>Flughafen-Transfer</h3>
+                <p>P&uuml;nktlicher Airport-Transfer mit Flug&uuml;berwachung und Empfang.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-text">shuttleservice</span>
+            <span class="logo-tagline">Powered by AYDEN</span>
+          </div>
+          <p class="footer-description">Ihr Chauffeurservice &amp; Limousinenservice in M&uuml;nchen. Flughafen-Transfer, Business Shuttle &amp; Event-Logistik f&uuml;r Firmenkunden. Powered by AYDEN.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="shuttle-service.html">Shuttle Service</a></li>
+            <li><a href="event-shuttle-service.html">Event Shuttle</a></li>
+            <li><a href="flughafentransfer.html">Flughafen-Transfer</a></li>
+            <li><a href="business-shuttle.html">Business Shuttle</a></li>
+            <li><a href="vip-chauffeurservice.html">VIP Shuttle</a></li>
+            <li><a href="shuttle-sicherheitsfahrer.html">Shuttle &amp; Sicherheit</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Standorte</h4>
+          <ul>
+            <li><a href="chauffeurservice-koeln.html">K&ouml;ln</a></li>
+            <li><a href="chauffeurservice-duesseldorf.html">D&uuml;sseldorf</a></li>
+            <li><a href="chauffeurservice-berlin.html">Berlin</a></li>
+            <li><a href="chauffeurservice-muenchen.html">M&uuml;nchen</a></li>
+            <li><a href="chauffeurservice-frankfurt.html">Frankfurt</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Unternehmen</h4>
+          <ul>
+            <li><a href="ueber-uns.html">&Uuml;ber uns</a></li>
+            <li><a href="fahrzeuge.html">Fahrzeuge</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 shuttleservice-event.de &ndash; Powered by AYDEN | Partner: amr-solutions.de</span>
+        <div class="footer-legal">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="datenschutz.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
