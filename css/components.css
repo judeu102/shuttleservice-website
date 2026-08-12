@@ -948,3 +948,19 @@
 .lang-opt:hover { opacity: 0.8; }
 .lang-opt.active { opacity: 1; box-shadow: 0 0 0 2px var(--color-accent-gold); }
 .lang-opt .flag { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+/* ---- Floating WhatsApp button ---- */
+.wa-float {
+  position: fixed; right: 20px; bottom: 20px; z-index: 900;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.wa-float:hover { transform: scale(1.06); box-shadow: 0 8px 22px rgba(0,0,0,0.28); }
+.wa-float svg { width: 32px; height: 32px; fill: #fff; }
+@media (max-width: 767px) {
+  .wa-float { width: 52px; height: 52px; right: 16px; bottom: 16px; }
+  .wa-float svg { width: 29px; height: 29px; }
+}
